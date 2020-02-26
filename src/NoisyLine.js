@@ -2,7 +2,7 @@ import Noise from "./Noise";
 import * as THREE from "three";
 
 class NoisyLine {
-    constructor(x1, y1, z1,x2, y2,  z2, a = 100, f = 2) {
+    constructor(x1, y1, z1, x2, y2, z2, a = 100, f = 2) {
         const x = x1 - x2;
         const y = y1 - y2;
         const z = z1 - z2;
@@ -50,8 +50,8 @@ class NoisyLine {
         const cos = Math.cos(radians);
         const sin = Math.sin(radians);
 
-        const ax = (cos * (x - cx)) + (sin * (y - cy)) + cx;
-        const ay = (cos * (y - cy)) - (sin * (x - cx)) + cy;
+        const ax = cos * (x - cx) + sin * (y - cy) + cx;
+        const ay = cos * (y - cy) - sin * (x - cx) + cy;
 
         return { ax: ax, ay: ay };
     }
@@ -60,7 +60,6 @@ class NoisyLine {
         const { noiseY, noiseZ, x1, y1, x2, y2, z1, z2, a } = this;
         const y = y1;
         const z = z1;
-
 
         let yOffset = null;
         let zOffset = null;
@@ -75,8 +74,8 @@ class NoisyLine {
             zOffset = zOffset || nz;
 
             const _x = x + x1;
-            const _y = (y + ny) - yOffset;
-            const _z = (z + nz) - zOffset;
+            const _y = y + ny - yOffset;
+            const _z = z + nz - zOffset;
             const { ax, ay } = this.rotate(x1, y1, _x, _y, this.angleY);
             const { _, ay: az } = this.rotate(x1, z1, _x, _z, this.angleZ);
 
@@ -92,7 +91,11 @@ class NoisyLine {
         let boxSize = boxSizeFrom;
 
         this.get().map(e => {
-            const boxGeometry = new THREE.BoxGeometry(boxSize, boxSize, boxSize);
+            const boxGeometry = new THREE.BoxGeometry(
+                boxSize,
+                boxSize,
+                boxSize
+            );
             points.push(new THREE.Vector3(e.x, e.y, e.z));
             const cube = new THREE.Mesh(boxGeometry, material);
             cube.position.set(e.x, e.y, e.z);

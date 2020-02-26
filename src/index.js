@@ -42,22 +42,20 @@ const ambientLight = new THREE.AmbientLight(0x404040);
 scene.add(ambientLight);
 
 const sphereSize = 1;
-const light1 = new THREE.PointLight(0xFF4040, 2);
+const light1 = new THREE.PointLight(0xff4040, 2);
 light1.castShadow = true;
 light1.position.set(7, 7, 10);
 scene.add(light1);
 const pointLightHelper1 = new THREE.PointLightHelper(light1, sphereSize);
 scene.add(pointLightHelper1);
 
-
-const light2 = new THREE.PointLight(0x40FF40, 2);
+const light2 = new THREE.PointLight(0x40ff40, 2);
 light2.castShadow = true;
 light2.position.set(-7, -7, -10);
 scene.add(light2);
 
 const pointLightHelper2 = new THREE.PointLightHelper(light2, sphereSize);
 scene.add(pointLightHelper2);
-
 
 camera.position.z = 150;
 
@@ -70,9 +68,10 @@ const animate = function() {
     renderer.render(scene, camera);
 };
 
-
 if (WEBGL.isWebGLAvailable()) {
     animate();
 } else {
-    document.getElementById("container").appendChild(WEBGL.getWebGLErrorMessage());
+    document
+        .getElementById("container")
+        .appendChild(WEBGL.getWebGLErrorMessage());
 }

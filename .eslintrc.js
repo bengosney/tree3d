@@ -4,7 +4,7 @@ module.exports = {
         "es6": true
     },
     "extends": [
-        //"eslint:recommended",
+        "eslint:recommended",
         "plugin:prettier/recommended"
     ],
     "globals": {
@@ -17,6 +17,7 @@ module.exports = {
     },
     "rules": {
         "no-unused-vars": "warn",
-        "prettier/prettier": "warn"
+        "prettier/prettier": "warn",
+        "max-len": 0
     }
 };

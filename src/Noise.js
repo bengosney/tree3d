@@ -25,7 +25,7 @@ class Noise {
     }
 
     scale(value, r1, r2) {
-        return (value - r1[0]) * (r2[1] - r2[0]) / (r1[1] - r1[0]) + r2[0];
+        return ((value - r1[0]) * (r2[1] - r2[0])) / (r1[1] - r1[0]) + r2[0];
     }
 
     reset() {
@@ -57,7 +57,7 @@ class Noise {
 
             if (angle < smallestAngle) {
                 smallestAngle = angle;
-                bestStart = this.a - (this.step() * 2);
+                bestStart = this.a - this.step() * 2;
             }
 
             prev = cur;
@@ -78,6 +78,5 @@ class Noise {
         return this.scale(this.noise(x, y, 0), [0, 1], this.range);
     }
 }
-
 
 export default Noise;
