@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    background: #d1f2e8;
+    background: -moz-linear-gradient(-45deg, #d1f2e8 0%, #6d7580 100%);
+    background: -webkit-linear-gradient(-45deg, #d1f2e8 0%, #6d7580 100%);
+    background: linear-gradient(135deg, #d1f2e8 0%, #6d7580 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d1f2e8', endColorstr='#6d7580', GradientType=1);
+}
+
+canvas {
+    display: block;
+}
